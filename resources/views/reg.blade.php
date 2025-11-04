@@ -79,13 +79,13 @@
         @error('name')
             <p class="red">{{$message}}</p>
         @enderror
-        <input type="text" name="name" placeholder="Введіть ім'я" id="name">
+        <input type="text" name="name" placeholder="Введіть ім'я" id="name" value="{{old('name')}}">
 
         <label>Email</label>
         @error('email')
             <p class="red">{{$message}}</p>
         @enderror
-        <input type="email" name="email" placeholder="Введіть email" id="email">
+        <input type="email" name="email" placeholder="Введіть email" id="email" value="{{old('email')}}">
 
         <label>Пароль</label>
         @error('password')

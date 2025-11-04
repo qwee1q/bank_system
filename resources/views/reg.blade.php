@@ -67,10 +67,21 @@
         .red {
             color: red;
         }
+        .login {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+        }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-
+    <ul class="nav justify-content-end gap-3 login">
+        <li class="nav-item">
+            <a href="{{route('login')}}" class="btn btn-outline-light">Log In</a>
+        </li>
+    </ul>
     <form action="{{route('registration')}}" method="POST">
         @csrf
         <h2>Реєстрація</h2>

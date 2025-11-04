@@ -12,10 +12,16 @@
         @csrf
         <h3>Login Here</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" name="username">
+        <label for="username">Email</label>
+        @error('email')
+            <p class="red">{{$message}}</p>
+        @enderror
+        <input type="text" placeholder="Email or Phone" id="email" name="email" value="{{old('email')}}">
 
         <label for="password">Password</label>
+        @error('password')
+            <p class="red">{{$message}}</p>
+        @enderror
         <input type="password" placeholder="Password" id="password" name="password">
 
         <button type="submit">Log In</button>
@@ -124,6 +130,10 @@ button:hover {
 }
 .social i {
     margin-right: 4px;
+}
+
+.red {
+    color: red;
 }
 </style>
 </html>

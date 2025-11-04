@@ -68,18 +68,21 @@
 </head>
 <body>
 
-    <form action="{{ route('register.submit') }}" method="POST">
+    <form action="{{route('registration')}}" method="POST">
         @csrf
         <h2>Реєстрація</h2>
 
         <label>Ім'я</label>
-        <input type="text" name="name" placeholder="Введіть ім'я" required>
+        <input type="text" name="name" placeholder="Введіть ім'я" id="name">
 
         <label>Email</label>
-        <input type="email" name="email" placeholder="Введіть email" required>
+        <input type="email" name="email" placeholder="Введіть email" id="email">
 
         <label>Пароль</label>
-        <input type="password" name="password" placeholder="Введіть пароль" required>
+        <input type="password" name="password" placeholder="Введіть пароль" id="password">
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password">
 
         <button type="submit">Зареєструватися</button>
     </form>

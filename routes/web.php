@@ -17,3 +17,5 @@ Route::get('/login',[LoginController::class,'create'])->middleware('guest')->nam
 Route::post('/login',[LoginController::class,'store'])->middleware('guest');
 
 Route::view('/dashboard','dashboard')->middleware('auth')->name('dashboard');
+
+Route::view('/logout','welcome')->middleware('auth')->name('logout');

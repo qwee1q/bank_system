@@ -64,6 +64,9 @@
             color: #ffffff;
             transform: scale(1.03);
         }
+        .red {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -73,16 +76,25 @@
         <h2>Реєстрація</h2>
 
         <label>Ім'я</label>
+        @error('name')
+            <p class="red">{{$message}}</p>
+        @enderror
         <input type="text" name="name" placeholder="Введіть ім'я" id="name">
 
         <label>Email</label>
+        @error('email')
+            <p class="red">{{$message}}</p>
+        @enderror
         <input type="email" name="email" placeholder="Введіть email" id="email">
 
         <label>Пароль</label>
-        <input type="password" name="password" placeholder="Введіть пароль" id="password">
+        @error('password')
+            <p class="red">{{$message}}</p>
+        @enderror
+        <input type="password" name="password" placeholder="Введіть пароль min 8 characters" id="password">
 
         <label>Confirm Password</label>
-        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password">
+        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password min 8 characters">
 
         <button type="submit">Зареєструватися</button>
     </form>

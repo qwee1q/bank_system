@@ -8,10 +8,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register',[RegisterController::class,'create'])->name('registration');
+Route::get('/register',[RegisterController::class,'create'])->middleware('guest')->name('registration');
 
-Route::post('/register',[RegisterController::class,'store'])->name('registration');
+Route::post('/register',[RegisterController::class,'store'])->middleware('guest');
 
-Route::get('/login',[LoginController::class,'create'])->name('login');
+Route::get('/login',[LoginController::class,'create'])->middleware('guest')->name('login');
 
-Route::post('/login',[LoginController::class,'store'])->name('login');
+Route::post('/login',[LoginController::class,'store'])->middleware('guest');
+
+Route::view('/dashboard','dashboard')->middleware('auth')->name('dashboard');

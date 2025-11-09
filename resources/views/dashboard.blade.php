@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>onebank — Дашборд</title>
-  <link rel="stylesheet" href="wel_dach.css"/>
+  <link rel="stylesheet" href="{{ asset('css/wel_dach.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style_dashboard.css') }}">
 </head>
 <body>

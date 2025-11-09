@@ -20,9 +20,13 @@
       </nav>
     </div>
     <div class="header-right">
-      <a class="nav-btn" href="{{route('login')}}" style="text-decoration:none;">Увійти</a>  
-        <a class="nav-btn" href="{{route('registration')}}" style="text-decoration:none;">Зареєструватись</a>
-
+        @guest
+            <a class="nav-btn" href="{{route('login')}}" style="text-decoration:none;">Увійти</a>
+            <a class="nav-btn" href="{{route('registration')}}" style="text-decoration:none;">Зареєструватись</a>
+        @endguest
+        @auth
+                <a class="nav-btn" href="{{route('dashboard')}}" style="text-decoration:none;">Dashboard</a>
+        @endauth
 
       <div class="lang-switch" aria-hidden="false">
         <span class="flag">🇺🇦</span>
@@ -158,7 +162,7 @@
     <div style="text-align:center; margin-top:22px;">
       <button class="nav-btn" id="detailsBtn">Детальніше</button>
     </div>
-    
+
   </section>
 
   <div class="container"></div>
@@ -273,7 +277,7 @@
         header.classList.remove('white-bg');
         closeAllMenus();
 
-      
+
         const formatNumber = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
         function animateCounter(el, start, end, duration) {

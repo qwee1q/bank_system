@@ -31,6 +31,12 @@
         @enderror
         <input type="password" placeholder="Password" id="password" name="password">
 
+        <div class="form-check">
+            <input type="checkbox" id="remember" name="remember" class="form-check-input">
+            <label for="remember" class="form-check-label">Remember Me</label>
+        </div>
+
+
         <button type="submit">Log In</button>
 
         <div class="social">

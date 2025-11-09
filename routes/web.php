@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
@@ -14,4 +15,4 @@ Route::post('/login',[LoginController::class,'store'])->middleware('guest');
 
 Route::view('/dashboard','dashboard')->middleware('auth')->name('dashboard');
 
-Route::view('/logout','welcome')->middleware('auth')->name('logout');
+Route::get('/logout',[LogoutController::class,'log'])->middleware('auth')->name('logout');

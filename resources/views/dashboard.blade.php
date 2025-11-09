@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="header-right">
-        <a class="nav-btn" href="{{route(name:'loguot')}}" style="text-decoration:none;">Вийти</a>
+        <a class="nav-btn" href="{{route('logout')}}" style="text-decoration:none;">Вийти</a>
       <div class="lang-switch" aria-hidden="false">
         <span class="flag">🇺🇦</span>
         <span class="active-lang">Укр</span>

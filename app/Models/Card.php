@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Card extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'number',
+        'balance',
+        'type',
+        'currency',
+    ];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

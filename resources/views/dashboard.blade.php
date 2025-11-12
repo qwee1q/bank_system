@@ -37,8 +37,8 @@
 
         <nav style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
           <a style="color:#fff;text-decoration:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);font-weight:700;">Огляд</a>
-          <a style="color:#bdbdc6;text-decoration:none;padding:8px;border-radius:8px;">Платежі</a>
-          <a style="color:#bdbdc6;text-decoration:none;padding:8px;border-radius:8px;">Картки</a>
+          <a style="color:#bdbdc6;text-decoration:none;padding:8px;border-radius:8px;" href="{{route('transaction')}}">Платежі</a>
+          <a style="color:#bdbdc6;text-decoration:none;padding:8px;border-radius:8px;" href="{{route('cards')}}">Картки</a>
           <a style="color:#bdbdc6;text-decoration:none;padding:8px;border-radius:8px;">Накопичення</a>
           <a style="color:#bdbdc6;text-decoration:none;padding:8px;border-radius:8px;">Налаштування</a>
         </nav>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>onebank — Дашборд</title>
   <link rel="stylesheet" href="{{ asset('css/wel_dach.css') }}"/>
-  <link rel="stylesheet" href="{{ asset('css/welcome3.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/style_dashboard.css') }}">
 </head>
 <body>
   <header class="header">
@@ -42,34 +42,28 @@
       </aside>
       <section class="dashboard-section">
         <h2>Мої картки</h2>
-        <div class="cards-list">
-          <div class="bank-card">
-            <div class="chip"></div>
-            <div class="card-type">Дебетова картка</div>
-            <div class="card-number">5375 41•• •••• 9876</div>
-            <div class="card-balance-label">Баланс</div>
-            <div class="card-balance">₴ 6 700.51</div>
-            <div class="card-status active">Активна</div>
-            <div class="card-actions">
-              <button class="card-btn">Деталі</button>
-              <button class="card-btn">Заблокувати</button>
-            </div>
-            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard logo" />
-          </div>
-          <div class="bank-card">
-            <div class="chip"></div>
-            <div class="card-type">Кредитна картка</div>
-            <div class="card-number">4149 50•• •••• 5043</div>
-            <div class="card-balance-label">Баланс</div>
-            <div class="card-balance">₴ 2 300.00</div>
-            <div class="card-status inactive">Не активна</div>
-            <div class="card-actions">
-              <button class="card-btn">Деталі</button>
-              <button class="card-btn">Активувати</button>
-            </div>
-            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa logo" />
-          </div>
-        </div>
+        @if ($user->cards->IsNotEmpty())
+            @foreach(auth()->user()->cards as $card)
+                  <div class="cards-list">
+                      <div class="bank-card">
+                          <div class="chip"></div>
+                          <div class="card-type">Дебетова картка</div>
+                          <div class="card-number">{{$card->number}}</div>
+                          <div class="card-balance-label">Баланс</div>
+                          <div class="card-balance">{{$card->balance}} {{$card->currency}}</div>
+                          <div class="card-actions">
+                              <button class="card-btn">Деталі</button>
+                              <button class="card-btn">Заблокувати</button>
+                          </div>
+                          <img class="card-logo" src="{{ $card->type == "MasterCard" ? "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" : "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" }}" alt="{{$card->type == "MasterCard" ? "Mastercard logo" : "Visa logo"}}" />
+                      </div>
+                  </div>
+            @endforeach
+
+          @else
+            <div>Not Found Card</div>
+          @endif
+
       </section>
     </div>
   </main>

@@ -61,7 +61,7 @@
             @endforeach
 
           @else
-            <div>Not Found Card</div>
+            <div class="notf">Not Found Card</div>
           @endif
 
       </section>

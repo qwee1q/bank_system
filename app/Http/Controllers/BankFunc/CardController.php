@@ -10,7 +10,7 @@ class CardController extends Controller
 {
     public function view(){
         $user = auth()->user();
-        return view('dashboard',compact('user'));
+        return view('card',compact('user'));
     }
 
     public function create(Request $request){

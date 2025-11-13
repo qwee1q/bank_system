@@ -34,9 +34,9 @@
           </div>
         </div>
         <nav class="sidebar-nav">
-          <a class="active" href="#">Огляд</a>
-          <a href="#">Платежі</a>
-          <a href="#">Картки</a>
+          <a class="active" href="{{route('trans_dashboard')}}">Огляд</a>
+          <a href="{{route('transaction')}}">Платежі</a>
+          <a href="{{route('cards')}}">Картки</a>
         </nav>
       </aside>
       <section class="dashboard-section">

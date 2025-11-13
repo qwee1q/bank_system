@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>onebank — Дашборд</title>
-  <link rel="stylesheet" href="welcomecss.css"/>
-  <link rel="stylesheet" href="welcome3css.css">
+  <link rel="stylesheet" href="{{ asset('css/wel_dach.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('css/welcome3.css') }}">
 </head>
 <body>
   <header class="header">

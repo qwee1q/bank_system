@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\BankFunc\CardController;
+use App\Http\Controllers\BankFunc\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
@@ -17,5 +18,8 @@ Route::post('/login',[LoginController::class,'store'])->middleware('guest');
 
 Route::get('/logout',[LogoutController::class,'log'])->middleware('auth')->name('logout');
 
-Route::get('/dashboard',[CardController::class,'view'])->middleware('auth')->name('test');
-Route::post('/dashboard',[CardController::class,'create'])->middleware('auth')->name('test');
+Route::get('/dashboard',[TransactionController::class,'view_dashboard'])->middleware('auth')->name('trans_dashboard');
+
+Route::get('/transaction',[TransactionController::class,'view_transaction'])->middleware('auth')->name('transaction');
+
+Route::get('/card',[CardController::class,'view'])->middleware('auth')->name('cards');

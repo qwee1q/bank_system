@@ -25,7 +25,7 @@
             <a class="nav-btn" href="{{route('registration')}}" style="text-decoration:none;">Зареєструватись</a>
         @endguest
         @auth
-                <a class="nav-btn" href="{{route('dashboard')}}" style="text-decoration:none;">Dashboard</a>
+                <a class="nav-btn" href="{{route('trans_dashboard')}}" style="text-decoration:none;">Dashboard</a>
         @endauth
 
       <div class="lang-switch" aria-hidden="false">

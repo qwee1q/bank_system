@@ -30,7 +30,7 @@
         <div class="profile-block">
           <div class="avatar">IK</div>
           <div>
-            <div class="profile-name">Іван К.</div>
+            <div class="profile-name">{{$user->name}}</div>
             <div class="user-status">Активний користувач</div>
           </div>
         </div>

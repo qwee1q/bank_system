@@ -41,7 +41,7 @@
         </nav>
       </aside>
       <section class="dashboard-section">
-        <h2>Мої картки</h2>
+<h2>Мої картки <button class="plus"><img src="plus.svg"></button></h2>
         @if ($user->cards->IsNotEmpty())
             @foreach(auth()->user()->cards as $card)
                   <div class="cards-list">
@@ -62,6 +62,21 @@
 
           @else
             <div class="notf">Not Found Card</div>
+                    <form id="registerForm" autocomplete="off">
+
+    
+    <label>Валюта:</label>
+    <div class="radio-group">
+      <label><input type="text" placeholder="currency"id="currency" name="currency"> долари</label>
+    </div>
+    
+    <label>Тип карти:</label>
+    <div class="radio-group">
+      <label><input type="text" placeholder="Visa or Mastercard" id="type"  name="type"> Mastercard</label>
+    </div>
+    
+    <button type="submit">Зареєструвати</button>
+  </form>
           @endif
 
       </section>

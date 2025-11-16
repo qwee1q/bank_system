@@ -23,3 +23,4 @@ Route::get('/dashboard',[TransactionController::class,'view_dashboard'])->middle
 Route::get('/transaction',[TransactionController::class,'view_transaction'])->middleware('auth')->name('transaction');
 
 Route::get('/card',[CardController::class,'view'])->middleware('auth')->name('cards');
+Route::post('/card',[CardController::class,'store'])->middleware('auth');

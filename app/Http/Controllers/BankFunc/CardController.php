@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BankFunc;
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -13,16 +14,27 @@ class CardController extends Controller
         return view('card',compact('user'));
     }
 
-    public function create(Request $request){
+    public function store(Request $request){
+        $request->validate([
+            'type' => 'string|required|in:Visa,MasterCard',
+            'currency' => 'string|required',
+        ]);
+
         $user = auth()->user();
 
+        $faker = Faker::create();
+
+        $number = $faker->creditCardNumber();
+
+        $balance = 0;
+
         $user->cards()->create([
-            'number' => $request->number,
-            'balance' => $request->balance,
+            'number' => $number,
+            'balance' => $balance,
             'type' => $request->type,
             'currency' => $request->currency,
         ]);
 
-        return redirect('/dashboard');
+        return redirect('/card');
     }
 }

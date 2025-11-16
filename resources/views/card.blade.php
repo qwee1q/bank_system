@@ -41,12 +41,11 @@
         </nav>
       </aside>
       <section class="dashboard-section">
-<h2>Мої картки <button class="plus"><img src="plus.svg"></button></h2>
+        <h2>Мої картки <button class="plus"><img src="{{route("create_card")}}"></button></h2>
         @if ($user->cards->IsNotEmpty())
+              <div class="cards-list">
             @foreach(auth()->user()->cards as $card)
-                  <div class="cards-list">
-                      <div class="bank-card">
-                          <div class="chip"></div>
+                      <div class="bank-card"><div class="chip"></div>
                           <div class="card-type">Дебетова картка</div>
                           <div class="card-number">{{$card->number}}</div>
                           <div class="card-balance-label">Баланс</div>
@@ -57,26 +56,25 @@
                           </div>
                           <img class="card-logo" src="{{ $card->type == "MasterCard" ? "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" : "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" }}" alt="{{$card->type == "MasterCard" ? "Mastercard logo" : "Visa logo"}}" />
                       </div>
-                  </div>
+
             @endforeach
-
+              </div>
           @else
-            <div class="notf">Not Found Card</div>
-                    <form id="registerForm" autocomplete="off">
+              <div>Not Found Card</div>
+              <form id="registerForm" autocomplete="off" method="POST" action="{{route('cards.store')}}">
+                  @csrf
+                  <label>Валюта:</label>
+                  <div class="radio-group">
+                      <input type="text" placeholder="currency" id="currency" name="currency">
+                  </div>
 
-    
-    <label>Валюта:</label>
-    <div class="radio-group">
-      <label><input type="text" placeholder="currency"id="currency" name="currency"> долари</label>
-    </div>
-    
-    <label>Тип карти:</label>
-    <div class="radio-group">
-      <label><input type="text" placeholder="Visa or Mastercard" id="type"  name="type"> Mastercard</label>
-    </div>
-    
-    <button type="submit">Зареєструвати</button>
-  </form>
+                  <label>Тип карти:</label>
+                  <div class="radio-group">
+                  <input type="text" placeholder="Visa or Mastercard" id="type"  name="type">
+                </div>
+
+                <button type="submit">Зареєструвати</button>
+              </form>
           @endif
 
       </section>

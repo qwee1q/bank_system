@@ -50,4 +50,9 @@ class User extends Authenticatable
     public function cards(): HasMany{
         return $this->hasMany(Card::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasManyThrough(Transaction::class, Card::class);
+    }
 }

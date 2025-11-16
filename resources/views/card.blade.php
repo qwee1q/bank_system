@@ -35,13 +35,13 @@
           </div>
         </div>
         <nav class="sidebar-nav">
-          <a href="dashboard.html">Огляд</a>
+          <a href="{{route('trans_dashboard')}}">Огляд</a>
           <a href="#">Платежі</a>
-          <a class="active" href="cards.html">Картки</a>
+          <a class="active" href="{{route('cards')}}">Картки</a>
         </nav>
       </aside>
       <section class="dashboard-section">
-        <h2>Мої картки <button class="plus"><img src="{{route("create_card")}}"></button></h2>
+        <h2>Мої картки <button class="plus">+</button></h2>
         @if ($user->cards->IsNotEmpty())
               <div class="cards-list">
             @foreach(auth()->user()->cards as $card)

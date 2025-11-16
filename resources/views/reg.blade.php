@@ -4,110 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Реєстрація</title>
-    <style>
-        body{
-            background: linear-gradient(135deg, #232526, #414345);
-            font-family: Arial, sans-serif;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        form{
-            width: 320px;
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        h2{
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        label{
-            display: block;
-            margin-top: 18px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        input, .role-select{
-            display: block;
-            height: 44px;
-            width: 100%;
-            background-color: rgba(27, 2, 2, 0.07);
-            border: none;
-            border-radius: 3px;
-            padding: 0 10px;
-            margin-top: 8px;
-            font-size: 14px;
-            font-weight: 10;
-            color: white;
-        }
-        ::placeholder{
-            color: #e5e5e5;
-        }
-        button{
-            margin-top: 24px;
-            width: 100%;
-            background-color: #ffffff;
-            color: #080710;
-            padding: 12px 0;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.5s, color 0.5s, transform 0.6s;
-        }
-        button:hover {
-            background: black;
-            color: #ffffff;
-            transform: scale(1.03);
-        }
-        .red {
-            color: red;
-        }
-        .login {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            z-index: 1000;
-        }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style_log_reg.css') }}">
 </head>
 <body>
-    <ul class="nav justify-content-end gap-3 login">
-        <li class="nav-item">
-            <a href="{{route('login')}}" class="btn btn-outline-light">Log In</a>
-        </li>
-    </ul>
     <form action="{{route('registration')}}" method="POST">
         @csrf
         <h2>Реєстрація</h2>
 
-        <label>Ім'я</label>
+        <label>Ім'я та прізвище</label>
         @error('name')
             <p class="red">{{$message}}</p>
         @enderror
-        <input type="text" name="name" placeholder="Введіть ім'я" id="name" value="{{old('name')}}">
+        <input type="text" name="name" placeholder="Введіть ваше ім'я та прізвище" id="name" value="{{old('name')}}">
 
         <label>Email</label>
         @error('email')
             <p class="red">{{$message}}</p>
         @enderror
-        <input type="email" name="email" placeholder="Введіть email" id="email" value="{{old('email')}}">
+        <input type="email" name="email" placeholder="Введіть ваш email" id="email" value="{{old('email')}}">
 
         <label>Пароль</label>
         @error('password')
             <p class="red">{{$message}}</p>
         @enderror
-        <input type="password" name="password" placeholder="Введіть пароль min 8 characters" id="password">
+        <input type="password" name="password" placeholder="Введіть ваш пароль (мінімум 8 символів)" id="password">
 
-        <label>Confirm Password</label>
-        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password min 8 characters">
+        <label>Підтвердження паролю</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Підтвердіть ваш пароль">
 
         <button type="submit">Зареєструватися</button>
+        <p class="regnin">Вже маєте акаунт ? <a href="{{route('login')}}" class="btn btn-outline-light">Log In</a> </p>
     </form>
 
 </body>

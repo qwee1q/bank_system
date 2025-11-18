@@ -44,20 +44,15 @@
           <h3>Останні транзакції</h3>
             @if ($user->transactions->IsNotEmpty())
                 <ul class="transactions-list">
+                    @foreach(auth()->user()->transactions as $trans)
                     <li class="transaction">
                         <div>
-                            <div class="txn-title">Кав'ярня Aroma</div>
-                            <div class="txn-date">Сьогодні, 09:14</div>
+                            <div class="txn-title">{{$trans->description}}</div>
+                            <div class="txn-date">{{$trans->transaction_date}}</div>
                         </div>
-                        <div class="txn-amount">-₴ 78.00</div>
+                        <div class="txn-amount">{{$trans->amount}}</div>
                     </li>
-                    <li class="transaction">
-                        <div>
-                            <div class="txn-title">Супермаркет Novus</div>
-                            <div class="txn-date">Вчора, 19:02</div>
-                        </div>
-                        <div class="txn-amount">-₴ 420.50</div>
-                    </li>
+                    @endforeach
                 </ul>
             @else
                 <div>

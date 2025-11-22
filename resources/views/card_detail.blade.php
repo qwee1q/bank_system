@@ -53,31 +53,32 @@
                                 <div class="card-actions">
                                     <button class="card-btn">Заблокувати</button>
                                 </div>
+                                <div class="card-balance-label">Create Date</div>
+                                <div class="card-balance">{{$card->created_at}}</div>
                                 <img class="card-logo" src="{{ $card->type == "MasterCard" ? "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" : "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" }}" alt="{{$card->type == "MasterCard" ? "Mastercard logo" : "Visa logo"}}" />
                             </div>
                         @endif
                     @endforeach
+
                 </div>
             @endif
+        </section>
+        <section class="dashboard-section">
             <div class="latest-transactions">
                 <h3>Останні транзакції</h3>
                 <ul class="transactions-list">
                 @if ($user->transactions->IsNotEmpty())
-                        @if($user->transactions->contains('card_id',$id))
-                            @foreach(auth()->user()->transactions as $trans)
+                        @foreach(auth()->user()->transactions as $trans)
+                            @if($trans->card_id == $id)
                                 <li class="transaction">
                                     <div>
-                                        <div class="txn-title">{{$trans->description}}</div>
+                                        <a href="{{route('transaction_detail',$trans->id)}}"><div class="txn-title">{{$trans->description}}</div></a>
                                         <div class="txn-date">{{$trans->transaction_date}}</div>
                                     </div>
                                     <div class="txn-amount">{{$trans->amount}}</div>
                                 </li>
-                            @endforeach
-                        @else
-                            <div>
-                                <div class="txn-title">Not Found Transactions</div>
-                            </div>
-                        @endif
+                            @endif
+                        @endforeach
                 @else
                     <div>
                         <div class="txn-title">Not Found Transactions</div>

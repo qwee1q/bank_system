@@ -21,6 +21,9 @@ Route::get('/logout',[LogoutController::class,'log'])->middleware('auth')->name(
 Route::get('/dashboard',[TransactionController::class,'view_dashboard'])->middleware('auth')->name('trans_dashboard');
 
 Route::get('/transaction',[TransactionController::class,'view_transaction'])->middleware('auth')->name('transaction');
+Route::get('/transaction/detail/{id}',[TransactionController::class,'detail'])->middleware('auth')->name('transaction_detail');
 
 Route::get('/card',[CardController::class,'view'])->middleware('auth')->name('cards');
 Route::post('/card',[CardController::class,'store'])->middleware('auth')->name('cards.store');
+
+Route::get('card/detail/{id}',[CardController::class,'detail'])->middleware('auth')->name('card_detail');

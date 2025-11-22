@@ -51,7 +51,7 @@
                           <div class="card-balance-label">Баланс</div>
                           <div class="card-balance">{{$card->balance}} {{$card->currency}}</div>
                           <div class="card-actions">
-                              <button class="card-btn">Деталі</button>
+                              <a class="card-btn" href="{{route('card_detail',$card->id)}}">Деталі</a>
                               <button class="card-btn">Заблокувати</button>
                           </div>
                           <img class="card-logo" src="{{ $card->type == "MasterCard" ? "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" : "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" }}" alt="{{$card->type == "MasterCard" ? "Mastercard logo" : "Visa logo"}}" />

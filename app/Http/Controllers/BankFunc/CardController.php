@@ -37,4 +37,9 @@ class CardController extends Controller
 
         return redirect('/card');
     }
+
+    public function detail($id){
+        $user = auth()->user();
+        return view('card_detail',compact('user','id'));
+    }
 }

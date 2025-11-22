@@ -47,7 +47,7 @@
                     @foreach(auth()->user()->transactions as $trans)
                     <li class="transaction">
                         <div>
-                            <div class="txn-title">{{$trans->description}}</div>
+                            <div class="txn-title"><a href="{{route('transaction_detail',$trans->id)}}">{{$trans->description}}</a></div>
                             <div class="txn-date">{{$trans->transaction_date}}</div>
                         </div>
                         <div class="txn-amount">{{$trans->amount}}</div>

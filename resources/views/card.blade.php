@@ -41,7 +41,7 @@
         </nav>
       </aside>
       <section class="dashboard-section">
-        <h2>Мої картки <button class="plus">+</button></h2>
+        <h2>Мої картки <button id="openAddCard" class="plus">+</button></h2>
         @if ($user->cards->IsNotEmpty())
               <div class="cards-list">
             @foreach(auth()->user()->cards as $card)
@@ -61,24 +61,78 @@
               </div>
           @else
               <div>Not Found Card</div>
-              <form id="registerForm" autocomplete="off" method="POST" action="{{route('cards.store')}}">
-                  @csrf
-                  <label>Валюта:</label>
-                  <div class="radio-group">
-                      <input type="text" placeholder="currency" id="currency" name="currency">
-                  </div>
-
-                  <label>Тип карти:</label>
-                  <div class="radio-group">
-                  <input type="text" placeholder="Visa or Mastercard" id="type"  name="type">
-                </div>
-
-                <button type="submit">Зареєструвати</button>
-              </form>
+              
           @endif
 
       </section>
     </div>
   </main>
+
+<div id="addCardModal" class="modal-overlay" style="display:none;" >
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="addCardTitle" onclick="event.stopPropagation();">
+    <div class="modal-header">
+      <div id="addCardTitle" class="modal-title">Додати картку</div>
+    </div>
+    <form id="registerForm" autocomplete="off" method="POST" action="{{route('cards.store')}}">
+        @csrf
+      <div class="field">
+        <label for="modal_currency">Валюта</label>
+        <input id="currency" name="currency" type="text" placeholder="UAH або USD" required>
+      </div>
+      <div class="field">
+        <label for="modal_type">Тип карти</label>
+        <input id="type" name="type" type="text" placeholder="Visa або Mastercard" required>
+      </div>
+      <button class="submit-btn" type="submit">Зареєструвати</button>
+    </form>
+  </div>
+</div>
 </body>
+<script>
+(function () {
+  const openBtn = document.getElementById('openAddCard') || document.querySelector('.plus');
+  const modal = document.getElementById('addCardModal');
+  const closeBtn = document.getElementById('closeAddCard');
+
+  if (!openBtn || !modal) return;
+
+  function openModal() {
+    modal.style.display = 'flex';            
+    modal.classList.add('open');             
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; 
+    const first = modal.querySelector('input, select, textarea');
+    if (first) first.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    
+    if (openBtn) openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal();
+  });
+
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display !== 'none') closeModal();
+  });
+})();
+</script>
 </html>

@@ -12,7 +12,7 @@ width: 400px;
 background: rgba(255, 255, 255);
 padding: 40px;
 border-radius: 10px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+box-shadow:0 0 5px rgba(255, 255, 255,1 );
 }
 h2{
 text-align: center;
@@ -23,13 +23,13 @@ display: block;
 margin-top: 18px;
 font-size: 14px;
 font-weight: 600;
+border: none;
 }
 input, .role-select{
 display: block;
 height: 44px;
-width: 93%;
-background-color: rgba(27, 2, 2, 0.07);
 border: none;
+width: 93%;
 border-radius: 3px;
 padding: 0 10px;
 margin-top: 8px;
@@ -39,6 +39,52 @@ color: rgb(0, 0, 0);
 }
 ::placeholder{
 color: #000000;
+}
+
+.social {
+display: flex;
+margin-top: 5px;
+
+}
+.social div {
+background: rgb(0, 0, 0);
+width: 200px;
+height: 55px;
+font-size: 18px;
+font-weight: 600;
+border-radius: 5px;
+background-color: rgba(0, 0, 0, );
+color: #eaf0fb;
+text-align: center;
+cursor: pointer;
+margin-top: 24px;
+width: 100%;
+transition: background 0.5s, color 0.5s, transform 0.6s;
+box-shadow: 0 0 5px rgba(0,0,0,1);
+}
+.social div:hover {
+transform: scale(1.07);
+color: black;
+background: rgb(255, 255, 255);
+}
+
+.sovial .go .fb{
+margin-right: 4px;
+position: absolute;
+top:100px;
+width: 10px;
+}
+.social .fb {
+margin-left: 15px;
+}
+.red {
+color: red;
+}
+.login {
+position: absolute;
+top: 20px;
+right: 30px;
+z-index: 1000;
 }
 button{
 margin-top: 24px;
@@ -50,6 +96,8 @@ font-size: 18px;
 font-weight: 600;
 border-radius: 5px;
 cursor: pointer;
+border:none;
+box-shadow: 0 0 5px rgba(0,0,0,1);
 transition: background 0.5s, color 0.5s, transform 0.6s;
 }
 button:hover {
@@ -62,7 +110,7 @@ color: red;
 }
 .signin {
 position: relative;
-left: 16%;
+left: 19%;
 margin-top: 10px;
 margin-bottom: 0;
 }
@@ -78,4 +126,65 @@ margin-bottom: 0;
 }
 .regnin a{
 color:black;
+}
+.custom-checkbox {
+display: flex;
+align-items: center;
+cursor: pointer;
+user-select: none;
+font-size: 1em;
+position: relative;
+}
+
+.custom-checkbox input[type="checkbox"] {
+opacity: 0;
+width: 0;
+height: 0;
+position: absolute;
+}
+
+.checkmark {
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.21);
+border: 2px solid #000000;
+margin-right: 9px;
+transition: background 0.2s, border-color 0.2s;
+box-shadow: 0 0 5px rgba(255,255,255,0.22);
+position: relative;
+flex-shrink: 0;
+}
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+background-color: black;
+border-color: #000000;
+}
+
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+display: block;
+}
+
+.custom-checkbox .checkmark:after {
+left: 4.5px;
+top: 1px;
+width: 4px;
+height: 9px;
+border: solid #fff;
+border-width: 0 3px 3px 0;
+transform: rotate(45deg);
+border-radius: 2px;
+}
+.custom-checkbox-text {
+color: #000000;
+font-size: 14px;
+font-weight: 400;
+letter-spacing: 0.5px;
+cursor: pointer;
+user-select: none;
 }

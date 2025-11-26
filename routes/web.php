@@ -27,3 +27,11 @@ Route::get('/card',[CardController::class,'view'])->middleware('auth')->name('ca
 Route::post('/card',[CardController::class,'store'])->middleware('auth')->name('cards.store');
 
 Route::get('card/detail/{id}',[CardController::class,'detail'])->middleware('auth')->name('card_detail');
+
+Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+
+Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+
+Route::get('/transactions', [TransactionController::class, 'view_transaction'])->name('transactions.index');
+
+Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transactions.show');

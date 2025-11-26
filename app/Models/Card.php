@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Card extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
         'user_id',
         'number',
@@ -15,6 +18,7 @@ class Card extends Model
         'type',
         'currency',
     ];
+    
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -23,4 +27,14 @@ class Card extends Model
     public function transactions(): HasMany{
         return $this->hasMany(Transaction::class);
     }
+    public function sentTransactions()
+{
+    return $this->hasMany(Transaction::class, 'from_card_id');
+}
+
+    public function receivedTransactions()
+{
+    return $this->hasMany(Transaction::class, 'to_card_id');
+}
+
 }

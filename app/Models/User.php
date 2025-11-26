@@ -51,8 +51,15 @@ class User extends Authenticatable
         return $this->hasMany(Card::class);
     }
 
-    public function transactions()
-    {
-        return $this->hasManyThrough(Transaction::class, Card::class);
-    }
+   public function transactions()
+{
+    return $this->hasManyThrough(
+        \App\Models\Transaction::class,
+        \App\Models\Card::class,
+        'user_id',       
+        'from_card_id',  
+        'id',           
+        'id'             
+    );
+}
 }
